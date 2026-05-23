@@ -69,3 +69,50 @@ const luckySnacks = [
   "どら焼き",
   "フルーツタルト",
 ];
+
+
+// 0~6 でランダムな整数(インデックス)を返す
+function getRandomIndex(){
+    const index = Math.floor(Math.random() * 7);
+    return index;
+}
+
+// 運勢データを取得
+function getFortune(){
+    const index = getRandomIndex();
+    return fortunes[index];
+}
+
+// ラッキーアイテムを取得
+function getLuckyItem(){
+    const index = getRandomIndex();
+    return luckyItems[index];
+}
+
+// ラッキーカラーを取得
+function getLuckyColor(){
+    const index = getRandomIndex();
+    return luckyColors[index];
+}
+
+function getLuckySnack(){
+    const index = getRandomIndex();
+    return luckySnacks[index];
+}
+
+// おみくじのアイテムを取得する
+// omikujiItems = [fortune, luckyItem, luckyColor, luckySnack]
+function getOmikujiItems(){
+    const omikujiItems = [];
+    
+    const fortune = getFortune();
+    omikujiItems.push(fortune);
+    const luckyItem = getLuckyItem();
+    omikujiItems.push(luckyItem);
+    const luckyColor = getLuckyColor();
+    omikujiItems.push(luckyColor);
+    const luckySnack = getLuckySnack();
+    omikujiItems.push(luckySnack); 
+    
+    return omikujiItems;
+}

@@ -128,7 +128,11 @@ function dispayTopToOmikuji(omikujiItems){
     const omikujiPage = document.querySelector("#js-omikujiPage");
     // おみくじページの内容
     omikujiPage.innerHTML = `
-    <h1>${omikujiItems[0].name}</h1>
+    <div>
+        <h1>${omikujiItems[0].name}</h1>
+        <!--<img src="${omikujiItems[0].img}" alt="運勢の画像" width="200">-->
+        ${omikujiItems[0].messages}
+    </div>
     <div>
         <h2>ラッキーアイテム</h2>
         ${omikujiItems[1]}

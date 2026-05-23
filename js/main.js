@@ -116,3 +116,50 @@ function getOmikujiItems(){
     
     return omikujiItems;
 }
+
+
+// 画面表示
+// トップページを非表示にして、おみくじページを表示
+function dispayTopToOmikuji(omikujiItems){
+    // トップページの非表示
+    const topPage = document.querySelector("#js-topPage");
+    topPage.setAttribute("hidden", "true");
+    
+    const omikujiPage = document.querySelector("#js-omikujiPage");
+    // おみくじページの内容
+    omikujiPage.innerHTML = `
+    <h1>${omikujiItems[0].name}</h1>
+    <div>
+        <h2>ラッキーアイテム</h2>
+        ${omikujiItems[1]}
+    </div>
+    <div>
+        <h2>ラッキーカラー</h2>
+        ${omikujiItems[2]}
+    </div>
+    <div>
+        <h2>ラッキーお菓子</h2>
+        ${omikujiItems[3]}
+    </div>
+    <button type="button" id="js-reDrawButton">もう一度引く</button>
+    `;
+}
+
+// おみくじを引いて、おみくじ画面に変える
+function drawOmikuji(){
+    const omikujiItems = getOmikujiItems();
+    dispayTopToOmikuji(omikujiItems);
+    document.querySelector("#js-reDrawButton").addEventListener("click", reDrawOmikuji);
+}
+
+// おみくじページでボタンが押されたら
+// おみくじページの内容を初期化して、トップページを再表示
+function reDrawOmikuji(){
+    const omikujiPage = document.querySelector("#js-omikujiPage");
+    const topPage = document.querySelector("#js-topPage");
+    
+    omikujiPage.innerHTML = "";
+    topPage.removeAttribute("hidden");
+}
+
+document.querySelector("#js-drawButton").addEventListener("click", drawOmikuji);

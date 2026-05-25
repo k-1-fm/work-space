@@ -69,3 +69,101 @@ const luckySnacks = [
   "どら焼き",
   "フルーツタルト",
 ];
+
+
+// 0~6 でランダムな整数(インデックス)を返す
+function getRandomIndex(){
+    const index = Math.floor(Math.random() * 7);
+    return index;
+}
+
+// 運勢データを取得
+function getFortune(){
+    const index = getRandomIndex();
+    return fortunes[index];
+}
+
+// ラッキーアイテムを取得
+function getLuckyItem(){
+    const index = getRandomIndex();
+    return luckyItems[index];
+}
+
+// ラッキーカラーを取得
+function getLuckyColor(){
+    const index = getRandomIndex();
+    return luckyColors[index];
+}
+
+function getLuckySnack(){
+    const index = getRandomIndex();
+    return luckySnacks[index];
+}
+
+// おみくじのアイテムを取得する
+// omikujiItems = [fortune, luckyItem, luckyColor, luckySnack]
+function getOmikujiItems(){
+    const omikujiItems = [];
+    
+    const fortune = getFortune();
+    omikujiItems.push(fortune);
+    const luckyItem = getLuckyItem();
+    omikujiItems.push(luckyItem);
+    const luckyColor = getLuckyColor();
+    omikujiItems.push(luckyColor);
+    const luckySnack = getLuckySnack();
+    omikujiItems.push(luckySnack); 
+    
+    return omikujiItems;
+}
+
+
+// 画面表示
+// トップページを非表示にして、おみくじページを表示
+function dispayTopToOmikuji(omikujiItems){
+    // トップページの非表示
+    const topPage = document.querySelector("#js-topPage");
+    topPage.setAttribute("hidden", "true");
+    
+    const omikujiPage = document.querySelector("#js-omikujiPage");
+    // おみくじページの内容
+    omikujiPage.innerHTML = `
+    <div>
+        <h1>${omikujiItems[0].name}</h1>
+        <!--<img src="${omikujiItems[0].img}" alt="運勢の画像" width="200">-->
+        ${omikujiItems[0].messages}
+    </div>
+    <div>
+        <h2>ラッキーアイテム</h2>
+        ${omikujiItems[1]}
+    </div>
+    <div>
+        <h2>ラッキーカラー</h2>
+        ${omikujiItems[2]}
+    </div>
+    <div>
+        <h2>ラッキーお菓子</h2>
+        ${omikujiItems[3]}
+    </div>
+    <button type="button" id="js-reDrawButton">もう一度引く</button>
+    `;
+}
+
+// おみくじを引いて、おみくじ画面に変える
+function drawOmikuji(){
+    const omikujiItems = getOmikujiItems();
+    dispayTopToOmikuji(omikujiItems);
+    document.querySelector("#js-reDrawButton").addEventListener("click", reDrawOmikuji);
+}
+
+// おみくじページでボタンが押されたら
+// おみくじページの内容を初期化して、トップページを再表示
+function reDrawOmikuji(){
+    const omikujiPage = document.querySelector("#js-omikujiPage");
+    const topPage = document.querySelector("#js-topPage");
+    
+    omikujiPage.innerHTML = "";
+    topPage.removeAttribute("hidden");
+}
+
+document.querySelector("#js-drawButton").addEventListener("click", drawOmikuji);

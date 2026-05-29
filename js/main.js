@@ -128,24 +128,43 @@ function dispayTopToOmikuji(omikujiItems){
     const omikujiPage = document.querySelector("#js-omikujiPage");
     // おみくじページの内容
     omikujiPage.innerHTML = `
-    <div>
-        <h1>${omikujiItems[0].name}</h1>
-        <!--<img src="${omikujiItems[0].img}" alt="運勢の画像" width="200">-->
-        ${omikujiItems[0].messages}
+    <div class="omikuji-wrapper">
+  <div class="omikuji-inner">
+    <h1 class="omikuji-title">${omikujiItems[0].name}</h1>
+
+    <!-- 画像 -->
+    <img src="${omikujiItems[0].img}" alt="運勢画像" width="300">
+    
+    <hr class="omikuji-divider">
+    
+    <p class="omikuji-message">
+      ${omikujiItems[0].messages}
+    </p>
+
+    <hr class="omikuji-divider">
+
+    <div class="lucky-section">
+      <h2 class="lucky-title"><span>✿</span> ラッキーアイテム <span>✿</span></h2>
+      <p class="lucky-result">${omikujiItems[1]}</p>
     </div>
-    <div>
-        <h2>ラッキーアイテム</h2>
-        ${omikujiItems[1]}
+
+    <hr class="omikuji-divider">
+
+    <div class="lucky-section">
+      <h2 class="lucky-title"><span>✿</span> ラッキーカラー <span>✿</span></h2>
+      <p class="lucky-result">${omikujiItems[2]}</p>
     </div>
-    <div>
-        <h2>ラッキーカラー</h2>
-        ${omikujiItems[2]}
+
+    <hr class="omikuji-divider">
+
+    <div class="lucky-section">
+      <h2 class="lucky-title"><span>✿</span> ラッキーお菓子 <span>✿</span></h2>
+      <p class="lucky-result">${omikujiItems[3]}</p>
     </div>
-    <div>
-        <h2>ラッキーお菓子</h2>
-        ${omikujiItems[3]}
-    </div>
-    <button type="button" id="js-reDrawButton">もう一度引く</button>
+
+    <button type="button" id="js-reDrawButton" class="redraw-btn">もう一度おみくじを引く</button>
+  </div>
+</div>
     `;
 }
 

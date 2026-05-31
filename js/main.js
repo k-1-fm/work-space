@@ -1,3 +1,20 @@
+//おみくじを引くボタンが押された際のおみくじ画像のアニメーション
+document.querySelector("#js-drawButton").addEventListener("click", shakeOmikuzi);
+
+function shakeOmikuzi(){
+  const omikuziImage = document.querySelector(".omikuji-image img");
+
+  //揺れを付与
+  omikuziImage.classList.add("shake");
+
+  //アニメーション完了を待って次の画面遷移
+  omikuziImage.addEventListener("animationend", () => {
+    omikuziImage.classList.remove("shake");
+    drawOmikuji();
+  }, {once: true});
+}
+
+
 //おみくじ運勢のデータ定義
 const fortunes = [
   {
@@ -180,9 +197,7 @@ function drawOmikuji(){
 function reDrawOmikuji(){
     const omikujiPage = document.querySelector("#js-omikujiPage");
     const topPage = document.querySelector("#js-topPage");
-    
     omikujiPage.innerHTML = "";
     topPage.removeAttribute("hidden");
 }
 
-document.querySelector("#js-drawButton").addEventListener("click", drawOmikuji);

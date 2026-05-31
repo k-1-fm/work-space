@@ -2,37 +2,37 @@
 const fortunes = [
   {
     name: "大吉",
-    // img: "", // imgパスの追記
+    img: "./img/daikichi.png", // imgパスの追記
     messages: "努力してきたことが実を結ぶ一日。自信を持って進もう。",
   },
   {
     name: "吉",
-    // img: "",
+    img: "./img/kichi.png",
     messages: "安定した運気。身近な幸せを大切にすると良い流れになる。",
   },
   {
     name: "中吉",
-    // img: "",
+    img: "./img/chukichi.png",
     messages: "少しずつ運気上昇中。焦らず着実に進むことがポイント。",
   },
   {
     name: "小吉",
-    // img: "",
+    img: "./img/shokichi.png",
     messages: "控えめながらも良い兆しあり。小さな成功を積み重ねよう。",
   },
   {
     name: "末吉",
-    // img: "",
+    img: "./img/suekichi.png",
     messages: "これから運気が上向く途中。今は準備を意識すると良い。",
   },
   {
     name: "凶",
-    // img: "",
+    img: "./img/kyo.png",
     messages: "慎重さが必要な時期。無理せず落ち着いて行動しよう。",
   },
   {
     name: "大凶",
-    // img: "",
+    img: "./img/daikyo.png",
     messages: "今は流れに逆らわず、守りを意識することが大切。",
   },
 ];
